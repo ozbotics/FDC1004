@@ -20,6 +20,10 @@ uint8_t SAMPLE_DELAY[] = {11,11,6,3};
 FDC1004::FDC1004(uint16_t rate){
   this->_addr = 0b1010000; //not configurable, to my knowledge
   this->_rate = rate;
+  
+  for (uint8_t i=0; i<4; i++) {
+    _last_capdac[i] = 0;
+  }
 }
 
 void FDC1004::write16(uint8_t reg, uint16_t data) {
